@@ -1,8 +1,18 @@
 body {
-  padding: 50px;
+ 
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
+
+.title-font {
+
+  font-family:"Lato",sans-serif;
+}
+
+.blue-underline{
+ border-bottom: 10px #6CC6D4 solid;
+}
+
