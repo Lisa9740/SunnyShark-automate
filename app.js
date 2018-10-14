@@ -3,11 +3,25 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+require('dotenv').config();
+var url=process.env.MONGO_URI;
+
+
 
 var app = express();
+
+//connexion de la base de donnée via mongoose
+var mongoose = require('mongoose');
+
+mongoose.Promise = global.Promise;
+
+
+mongoose.connect(url, {useNewUrlParser:true})
+  .then(() =>  console.log('connection succesful'))
+  .catch((err) => console.error(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -18,6 +32,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
