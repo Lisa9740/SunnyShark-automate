@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var AutomateSchema = new mongoose.Schema({
     marque: String,
     modele: String,
-    date_service: String,
+    date_service: Date,
     lieu: String,
     bassin: String,
     numeroserie: { type: String, index: { unique: true }}

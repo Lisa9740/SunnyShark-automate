@@ -6,14 +6,14 @@
   <% include partials/header.ejs%>
   <div class="container-fluid">
 
-    <div class="row  container-fluid ">
+    <div class="row  container-fluid mb-3 ">
       <div class="col-10  mb-3 mt-3">
-        <h1 class="text-center lato-font grey-color text-capitalized">Liste des automates</h1>
+        <h1 class="text-center lato-font grey-color text-capitalized"> </h1>
       </div>
       <div class="col-2 text-right pt-3 mt-3">
         <a href="#mymodal" data-toggle="modal" date-target="#mymodal" type="button" class=" btn btn-primary mr-2" id="create_button"><i
             class="far fa-plus-square mr-2 mt-1"></i>
-          Ajouter
+         Nouvel
           automate </a>
       </div>
 
@@ -98,9 +98,10 @@
   <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title lato-font font-weight-bold" id="exampleModalLabel"> Ajout d'un nouvel automate</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal-header blue-underline bg-dark text-white">
+          <h5 class="modal-title lato-font" id="exampleModalLabel"> <i
+            class="far fa-plus-square mr-2 mt-1"> </i>Ajout d'un nouvel automate</h5>
+          <button type="button" class="close bg-light" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -118,9 +119,9 @@
   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header blue-underline bg-dark text-white">
           <h5 class="modal-title lato-font font-weight-bold" id="exampleModalLabel"> Modification des données</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close bg-light" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>

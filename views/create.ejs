@@ -1,25 +1,33 @@
-
-<form action="/save" method="post" class="needs-validation lato-font" id="create-form" novalidate>
+<form action="/save" method="post" class="lato-font" id="create-form">
 
   <div class="form-group">
     <label for=""> Marque</label>
     <input class="form-control" type="text" name="marque" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
-    </div> <div class="form-group">
-      <label for=""> Modèle</label>
+  </div>
+  <div class="form-group">
+    <label for=""> Modèle</label>
 
-      <input class="form-control" type="text" name="modele" required>
+    <input class="form-control" type="text" name="modele" required>
   </div>
 
   <div class="form-group">
-    <label for=""> Date de mise en service</label>
+    <div class="row">
+      <div class="col">
+        <label for=""> Date de mise en service</label>
 
-    <input class="form-control" type="text" name="date_service" required />
+        <input class="form-control" type="date" name="date_service" required />
+      </div>
+      <div class="col">
+        <label for=""> Lieu </label>
+
+        <input class="form-control" type="number" name="lieu" required />
+      </div>
+    </div>
+
   </div>
 
   <div class="form-group">
-    <label for=""> Lieu </label>
 
-    <input class="form-control" type="number" name="lieu" required />
   </div>
   <div class="form-group">
     <label for=""> Bassin affecté</label>
@@ -34,4 +42,3 @@
   <input class="btn btn-success" type="submit" value="Valider" />
 
 </form>
-
