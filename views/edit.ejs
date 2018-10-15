@@ -1,40 +1,48 @@
-
 <form action="/update/" method="post" class="lato-font" id="edit-form">
 
   <div class="form-group">
-      <label for=""> Marque</label>
-    <input  class="form-control"  type="text" name="marque" value="<%=automates.marque%>" id="marque"/></div>
-
-  <div class="form-group">
-      <label for=""> Modèle</label>
-    <input  class="form-control" type="text" name="modele" value="<%=automates.modele%>" id="modele" />
+    <div class="row">
+      <div class="col"> <label for=""> Marque</label>
+        <input class="form-control" type="text" name="marque" value="<%=automates.marque%>" id="marque" />
+      </div>
+      <div class="col">
+        <label for=""> Modèle</label>
+        <input class="form-control" type="text" name="modele" value="<%=automates.modele%>" id="modele" />
+      </div>
+    </div>
   </div>
 
   <div class="form-group ">
     <div class="row">
       <div class="col">
-      <label for=""> Date de mise en service </label>
-     <input  class="form-control"  type="date" name="date_service" value="<%=automates.date_service%>" id="date_service" />
+        <label for=""> Date de mise en service </label>
+        <input class="form-control" type="date" name="date_service" value="<%=automates.date_service%>" id="date_service" />
+      </div>
+      <div class="col">
+        <label for=""> Lieu</label>
+        <input class="form-control" type="number" name="lieu" value="<%=automates.lieu%>" id="lieu" />
+      </div>
     </div>
-    <div class="col">
-      <label for=""> Lieu</label>
-     <input  class="form-control"  type="number" name="lieu" value="<%=automates.lieu%>" id="lieu" />
   </div>
-</div>
-</div>
   <div class="form-group">
-    
+
     <label for=""> Bassin</label>
-     <input  class="form-control"  type="text" name="bassin" value="<%=automates.bassin%>" id="bassin" />
+    <input class="form-control" type="text" name="bassin" value="<%=automates.bassin%>" id="bassin" />
 
   </div>
 
   <div class="form-group">
-      <label for=""> Numéro de serie</label>
-    <input  class="form-control"  type="text" name="numeroserie" value="<%=automates.numeroserie%>" id="numeroserie" />
+    <label for=""> Numéro de serie</label>
+    <input class="form-control" type="text" name="numeroserie" value="<%=automates.numeroserie%>" id="numeroserie" />
+  </div>
+
+
+  <div class="form-group">
+    <label for=""> Description / commentaire :</label>
+    <textarea class="form-control" type="text" name="description_edit" value="<%=automates.description%>"  placeholder="<%=automates.description%>" id="description_edit" ></textarea>
   </div>
 
   <input type="hidden" id="idAutomate" name="idAutomate" value="<%=automates._id%>">
 
   <button class="btn btn-success" type="submit">Modifier</button>
-   </form>
+</form>

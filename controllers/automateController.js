@@ -69,7 +69,7 @@ automateController.list = function(req, res) {
       var lieu = req.body.lieu;
       var bassin = req.body.bassin;
       var numeroserie = req.body.numeroserie;
-      
+      var description = req.body.description;
 
   Automate.findByIdAndUpdate(id, { 
     $set: { 
@@ -78,7 +78,8 @@ automateController.list = function(req, res) {
       date_service:date_service, 
       lieu:lieu, 
       bassin: bassin,  
-      numeroserie:numeroserie }
+      numeroserie:numeroserie,
+      description:description }
     }, function (err) {
     if (!err) {
       res.redirect("/");

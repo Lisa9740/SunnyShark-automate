@@ -24,3 +24,6 @@ a {
   left:25px;
 }
 
+.hidden{
+  display: none;
+}
