@@ -5,25 +5,39 @@
 <body>
   <% include partials/header.ejs%>
   <div class="container-fluid">
+
     <div class="row  container-fluid ">
-        <div class="col-10  mb-3 mt-3">
-            <h1 class="text-center lato-font grey-color text-capitalized">Liste des automates</h1>
-          </div>
+      <div class="col-10  mb-3 mt-3">
+        <h1 class="text-center lato-font grey-color text-capitalized">Liste des automates</h1>
+      </div>
       <div class="col-2 text-right pt-3 mt-3">
-        <a href="#mymodal" data-toggle="modal" date-target="#mymodal" type="button" class=" btn btn-primary mr-2" id="create_button"><i class="far fa-plus-square mr-2 mt-1"></i>
+        <a href="#mymodal" data-toggle="modal" date-target="#mymodal" type="button" class=" btn btn-primary mr-2" id="create_button"><i
+            class="far fa-plus-square mr-2 mt-1"></i>
           Ajouter
           automate </a>
       </div>
-     
-    </div>
 
+    </div>
+    <!------------------------------------------->
+    <!---Messages d'alerte de succès add/update/delete----->
+    <!------------------------------------------->
+    <div id="messages" class="hide" role="alert">
+      <div id="messages_content"></div>
+    </div>
+    <div id="messages_modif" class="hide" role="alert">
+      <div id="messages_content_modif"></div>
+    </div>
+    <div id="messages_delete" class="hide" role="alert">
+      <div id="messages_content_delete"></div>
+    </div>
+<!------------------------------------------------------->
 
 
     <% if(automates.length>0) { %>
-    <table class="table table-light table-striped table-bordered ">
+    <table class="table table-light table-striped table-bordered table-hover">
       <thead>
         <tr>
-         
+
           <th>Marque</th>
           <th>Modèle</th>
           <th>Numéro de série</th>
@@ -38,7 +52,7 @@
 
         <% for(var i=0; i<(automates.length);i++) { %>
         <tr>
-           
+
           <td>
             <%= automates[i].marque%>
           </td>
@@ -67,7 +81,7 @@
 
           <td>
             <form onSubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette automate ?')" action="/delete/<%= automates[i]._id %>"
-              method="POST">
+              method="POST" id="delete-form">
               <button class="btn btn-success" type="submit" id="alertDelete"><i class='far fa-trash-alt '></i></button>
             </form>
           </td>

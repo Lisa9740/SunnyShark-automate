@@ -6,6 +6,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var helmet = require('helmet');
+
 require('dotenv').config();
 ;
 var app = express();
@@ -30,6 +32,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(helmet());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
