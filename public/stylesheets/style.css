@@ -7,13 +7,16 @@ a {
   color: #00B7FF;
 }
 
-.title-font {
+.lato-font {
 
   font-family:"Lato",sans-serif;
 }
 
 .blue-underline{
  border-bottom: 10px #6CC6D4 solid;
+}
+.grey-color{
+  color: rgb(180, 180, 180);
 }
 
 #create_button{
