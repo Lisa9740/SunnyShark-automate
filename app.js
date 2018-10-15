@@ -6,13 +6,8 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
-
 require('dotenv').config();
-var url=process.env.MONGO_URI;
-
-
-
+;
 var app = express();
 
 //connexion de la base de donnée via mongoose
@@ -20,7 +15,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 
-mongoose.connect(url, {useNewUrlParser:true})
+mongoose.connect( process.env.MONGO_URI, {useNewUrlParser:true})
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
