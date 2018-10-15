@@ -5,8 +5,9 @@
 <body>
   <% include partials/header.ejs%>
   <div class="container-fluid">
-    <a href="#mymodal" data-toggle="modal" date-target="#mymodal" type="button" class="mt-2 btn btn-primary"> Ajouter
+    <a href="#mymodal" data-toggle="modal" date-target="#mymodal" type="button" class="mt-2 btn btn-primary" id="create_button"> Ajouter
       automate </a>
+    
 
 
     <h1 class="text-center">Liste des automates</h1>
@@ -17,7 +18,7 @@
           <th>Marque</th>
           <th>Modèle</th>
           <th>Numéro de série</th>
-          <th>Secteur</th>
+          <th>Date de mise en service</th>
           <th>Lieu</th>
           <th>Bassin</th>
           <th>Modifier</th>
@@ -39,18 +40,19 @@
             <%= automates[i].numeroserie%>
           </td>
           <td>
-            <%= automates[i].lieu%>
+              <%= automates[i].date_service%>
+           
           </td>
           <td>
-            <%= automates[i].secteur%>
+              <%= automates[i].lieu%>
           </td>
           <td>
             <%= automates[i].bassin%>
           </td>
 
           <td><a href="#editModal" data-target="#editModal" data-toggle="modal" data-id="<%=automates[i]._id%>"
-              data-marque="<%=automates[i].marque%>" data-modele="<%=automates[i].modele%>" data-secteur="<%=automates[i].secteur%>"
-              data-bassin="<%=automates[i].bassin%>" data-numeroserie="<%=automates[i].numeroserie%>"><i class="fas fa-edit fa-2x"></i></a></td>
+              data-marque="<%=automates[i].marque%>" data-modele="<%=automates[i].modele%>" data-date_service="<%=automates[i].date_service%>"
+              data-bassin="<%=automates[i].bassin%>"  data-lieu="<%=automates[i].lieu%>" data-numeroserie="<%=automates[i].numeroserie%>"><i class="fas fa-edit fa-2x"></i></a></td>
 
 
           <td>

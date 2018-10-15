@@ -1,37 +1,35 @@
+<form action="/save" method="post" class="needs-validation" novalidate>
 
+  <div class="form-group">
+    <label for=""> Marque</label>
+    <input class="form-control" type="text" name="marque" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+    </div> <div class="form-group">
+      <label for=""> Modèle</label>
 
-      <form action="/save" method="post">
-        <table>
-          <tbody>
-            <tr>
-              <td>Marque</td>
-              <td><input type="text" name="marque" /></td>
-            </tr>
-            <tr>
-              <td>Modèle</td>
-              <td><textarea name="modele"></textarea></td>
-            </tr>
-            <tr>
-              <td>Secteur</td>
-              <td><input type="text" name="secteur" /></td>
-            </tr>
-            <tr>
-              <td>Lieu</td>
-              <td><input type="number" name="lieu" /></td>
-            </tr>
-            <tr>
-              <td>Bassin affecté</td>
-              <td><input type="number" name="bassin" /></td>
-            </tr>
-            <tr>
-              <td>Numéro de série</td>
-              <td><input type="number" name="numeroserie" /></td>
-            </tr>
-            <tr>
-              <td colspan="2"><input class="btn btn-success" type="submit" value="Validé" /></td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
+      <input class="form-control" type="text" name="modele" required>
+  </div>
 
+  <div class="form-group">
+    <label for=""> Date de mise en service</label>
 
+    <input class="form-control" type="text" name="date_service" required />
+  </div>
+
+  <div class="form-group">
+    <label for=""> Lieu </label>
+
+    <input class="form-control" type="number" name="lieu" required />
+  </div>
+  <div class="form-group">
+    <label for=""> Bassin affecté</label>
+
+    <input class="form-control" type="text" name="bassin" required />
+  </div>
+  <div class="form-group">
+    <label for=""> Numéro de série</label>
+
+    <input class="form-control" type="text" name="numeroserie" required />
+  </div>
+  <input class="btn btn-success" type="submit" value="Validé" />
+
+</form>

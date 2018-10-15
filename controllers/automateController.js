@@ -65,7 +65,7 @@ automateController.list = function(req, res) {
       var id=req.body.idAutomate;
       var marque = req.body.marque;
       var modele = req.body.modele;
-      var secteur = req.body.secteur;
+      var date_service = req.body.date_service;
       var lieu = req.body.lieu;
       var bassin = req.body.bassin;
       var numeroserie = req.body.numeroserie;
@@ -75,7 +75,7 @@ automateController.list = function(req, res) {
     $set: { 
       marque:marque, 
       modele:modele,
-      secteur:secteur, 
+      date_service:date_service, 
       lieu:lieu, 
       bassin: bassin,  
       numeroserie:numeroserie }
