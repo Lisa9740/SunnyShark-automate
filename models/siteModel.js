@@ -6,7 +6,11 @@ let sitesSchema = Schema({
     nom: String,
     adresse: String,
     telephone: String,
-    id_bassin: [{type: Schema.Types.ObjectId, ref:'bassins'}]
+    id_bassin: [
+        {type: Schema.Types.ObjectId, 
+            ref:'bassins'
+        }
+    ]
 });
 
 let sites = mongoose.model('sites', sitesSchema);

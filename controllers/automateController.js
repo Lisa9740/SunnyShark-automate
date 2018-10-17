@@ -2,6 +2,8 @@ let Automates = require('../models/AutomateModel');
 let Marques = require('../models/marqueModel');
 let TypeAutomates = require('../models/typeAutomateModel');
 
+
+// CLASS QUI PERMET D'APPLIQUER DES FONCTIONS "CRUD" A TRAVERS DES ROUTES SITUÉ DANS ../ROUTES/INDEX
 class Automate {
 
     listAutomate(req, res){

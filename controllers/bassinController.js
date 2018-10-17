@@ -3,6 +3,8 @@ let Type_Bassins = require('../models/typeBassin');
 let sites = require('../models/siteModel');
 let villes = require('../models/villeModel');
 
+
+// CLASS QUI PERMET D'APPLIQUER DES FONCTIONS "CRUD" A TRAVERS DES ROUTES SITUÉ DANS ../ROUTES/USERS
 class Bassins {
 
     listBassins(req, res){
