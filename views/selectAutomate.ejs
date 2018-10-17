@@ -1,0 +1,6 @@
+<label for="">Automates</label>
+<select class="form-control"  name="id_automate">
+    <% automates.forEach(function (automate) { %>
+        <option value="<%= automate._id %>"><%= automate.marque %></option>
+    <% }) %>
+</select>

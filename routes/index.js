@@ -3,28 +3,29 @@ var router = express.Router();
 var automateController = require("../controllers/automateController.js");
 
 
-// Get all automateControllers
-router.get('/', automateController.list);
+let automates = new automateController;
 
-// Get single automateController by id
-router.get('/show/:id', automateController.show);
 
-// Create automateController
-router.get('/create', automateController.create);
+router.get('/', automates.listAutomate);
 
-// Save automateController
- router.post('/save', automateController.save);
+router.get('/createAutomates', automates.createAutomate);
 
-// Edit automateController
-router.get('/edit/:id', automateController.edit);
+router.get('/createMarques', automates.createMarque);
 
-// Edit update
-router.post('/update/', automateController.update);
+router.get('/createTypes', automates.createType);
 
-// Edit update
-router.post('/delete/:id', automateController.delete);
+router.get('/selectType', automates.selectTypes);
 
-module.exports = router;
+router.get('/selectMarque', automates.selectMarques);
 
+router.post('/saveAutomates', automates.saveAutomate);
+
+router.post('/saveMarques', automates.saveMarque);
+
+router.post('/saveTypes', automates.saveType);
+
+router.post('/editAutomate', automates.editAutomates);
+
+router.post('/delete/:id', automates.deleteAutomates);
 
 module.exports = router;

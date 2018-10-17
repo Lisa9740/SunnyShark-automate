@@ -1,12 +1,16 @@
 var mongoose = require('mongoose');
 
 var AutomateSchema = new mongoose.Schema({
-    marque: String,
-    modele: String,
-    date_service: Date,
-    lieu: String,
-    bassin: String,
-    numeroserie: { type: String, index: { unique: true }}
+    serial: {type: String, unique : true},
+    date_service: {type: Date},
+    id_marques : {type: mongoose.Schema.ObjectId, ref:'Marques'},
+    id_types :{type: mongoose.Schema.ObjectId, ref:'Types_automates'},
+    configuration :  {type: String}
+   
   });
 
-  module.exports = mongoose.model('Automate', AutomateSchema);
+
+
+
+
+  module.exports =  mongoose.model('Automate', AutomateSchema);;

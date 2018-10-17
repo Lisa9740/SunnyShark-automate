@@ -1,55 +1,31 @@
-<form action="/save" method="post" class="lato-font" id="create-form">
 
-  <div class="form-group">
-    <div class="row">
-      <div class="col">
-        <label for=""> Marque</label>
-        <input class="form-control" type="text" name="marque"
-          required />
-      </div>
-      <div class="col">
-        <label for=""> Modèle</label>
+<form action="/saveAutomates" method="post" class="lato-font" id="create-form">
 
-        <input class="form-control" type="text" name="modele" required>
-      </div>
-    </div>
-  </div>
+  <div class="form-group " id="selectMarque1"></div>
+    <div class="form-group" id="selectType1"  ></div>
 
   <div class="form-group">
     <div class="row">
       <div class="col">
         <label for=""> Date de mise en service</label>
-
-        <input class="form-control" type="date" name="date_service" required />
+        <input class="form-control" type="date" name="date_service"  />
       </div>
       <div class="col">
-        <label for=""> Lieu </label>
-
-        <input class="form-control" type="number" name="lieu" required />
+        <label for=""> Numero de Série </label>
+        <input class="form-control" type="number" name="serial" required />
       </div>
     </div>
 
   </div>
 
   <div class="form-group">
+      <label for=""> Configuration </label>
+      <input class="form-control" type="number" name="configuration"  />
+    </div>
 
-  </div>
-  <div class="form-group">
-    <label for=""> Bassin affecté</label>
+ 
+     
 
-    <input class="form-control" type="text" name="bassin" required />
-  </div>
-  <div class="form-group">
-    <label for=""> Numéro de série</label>
-
-    <input class="form-control" type="text" name="numeroserie" required />
-  </div>
-
-  <div class="form-group">
-    <label for=""> Description / commentaire</label>
-
-    <textarea class="form-control" type="text" name="description" required ></textarea>
-  </div>
   <input class="btn btn-success" type="submit" value="Valider" />
 
 </form>

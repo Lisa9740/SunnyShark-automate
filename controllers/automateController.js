@@ -1,110 +1,127 @@
-var Automate = require("../models/AutomateModel");
+let Automates = require('../models/AutomateModel');
+let Marques = require('../models/marqueModel');
+let TypeAutomates = require('../models/typeAutomateModel');
 
-var automateController = {};
+class Automate {
 
-//Fonction qui liste les automates
-automateController.list = function(req, res) {
-    Automate.find({}).exec(function (err, automates) {
-      if (err) {
-        console.log("Error:", err);
-      }
-      else {
-        res.render("../views/index", {automates: automates});
-      }
-    });
-  };
-
- // Montre un automate en fonction de son id
- automateController.show = function(req, res) {
-    Automate.findOne({_id: req.params.id}).exec(function (err, automates) {
-      if (err) {
-        console.log("Error:", err);
-      }
-      else {
-        res.render("../views/show", {automates: automates});
-      }
-    });
-  };
-
-//fonction qui redirige vers la page create
-  automateController.create = function(req, res) {
-    res.render("../views/create");
-  };
-
-//fonction qui sauvegarde la nouvelle donnée dans la bdd
-  automateController.save = function(req, res) {
-    var automate = new Automate(req.body);
-  
-    automate.save(function(err) {
-      if(err) {
-        console.log(err);
-        res.render("../views/create");
-      } else {
-        console.log("Successfully created an employee.");
-        res.redirect("/");
-      }
-    });
-  };
-
-  //Add edit automates by id function, it just redirects to edit page.
-  automateController.edit = function(req, res) {
-    Automate.findOne({_id: req.params.id}).exec(function (err, automates) {
-      if (err) {
-        console.log("Error:", err);
-      }
-      else {
-        res.render("../views/edit/_id", {automates: automates});
-      }
-    });
-  };
-
-  //Modifie les entrées dans la base de donnée
-
-    automateController.update = function(req, res) {
-      // recuperation des tous les champs du formulaire à editer
-      var id=req.body.idAutomate;
-      var marque = req.body.marque;
-      var modele = req.body.modele;
-      var date_service = req.body.date_service;
-      var lieu = req.body.lieu;
-      var bassin = req.body.bassin;
-      var numeroserie = req.body.numeroserie;
-      var description = req.body.description;
-
-  Automate.findByIdAndUpdate(id, { 
-    $set: { 
-      marque:marque, 
-      modele:modele,
-      date_service:date_service, 
-      lieu:lieu, 
-      bassin: bassin,  
-      numeroserie:numeroserie,
-      description:description }
-    }, function (err) {
-    if (!err) {
-      res.redirect("/");
-    }else{
-      res.redirect("/error")
+    listAutomate(req, res){
+        Automates.find({}).
+        populate('id_marques').
+        populate('id_types').
+        exec(function (err, result) {
+            if(!err){
+                res.render('../views/index',{
+                    message: 'bonsoir je test un truc en node js',
+                    automates: result
+                })
+            }else{
+                console.log("erreur lors de la récupération de données =>",err);
+            }
+        });
     }
-    
-  })
-    };
-//Supprime les entrées de la bdd par rapport à son id
-automateController.delete = function(req, res) {
-  var id=req.params.id;
-    Automate.remove({_id:id},function(err) {
-      if(err) {
-        console.log(err)
-      }
-      else {
-        console.log("Automate deleted!");
-        res.redirect("/");
-      }
-    });
-  };
 
+    saveAutomate(req, res){
+        let automate = new Automates(req.body);
+        automate.save(function (err) {
+            console.log('dans la fonction save');
+            if(!err){
+                res.redirect('/')
+            }else{
+                console.log('erreur lors de l\'ajout', err);
+                res.redirect('/');
+            }
+        })
+    }
+    createAutomate(req, res){
+        res.render('../views/automates/createAutomate',{
+            title: 'ajout automate'
+        })
+    }
 
+    createMarque(req, res){
+        res.render('../views/automates/marqueAutomate',{
+            title: 'Création d\'une marque',
+        })
+    }
 
+    saveMarque(req, res){
+        let marque = new Marques(req.body);
+        marque.save(function (err) {
+            if(!err){
+                res.redirect('/')
+            }else{
+                res.redirect('/')
+            }
+        })
+    }
 
+    createType(req, res){
+        res.render('../views/automates/typeAutomate',{
+            title: 'Créatin d\'un type'
+        })
+    }
 
-module.exports = automateController;
+    saveType(req, res){
+        let type = new TypeAutomates(req.body);
+        type.save(function (err) {
+            if(!err){
+                res.redirect('/')
+            }else{
+                res.redirect('/automate/createTypes')
+            }
+        })
+    }
+    selectTypes (req, res){
+        TypeAutomates.find({}).exec(function (err, result) {
+            if(!err){
+                res.render('../views/selectType',{
+                    types: result
+                })
+            }
+        });
+    }
+    selectMarques (req,res){
+        Marques.find({}).exec(function (err, result) {
+            if(!err){
+                res.render('../views/selectMarque',{
+                    marques: result
+                })
+            }
+        });
+    }
+
+    editAutomates (req, res){
+      let update = {
+          id_marques: req.body.selectMarques,
+          id_types: req.body.selectTypes,
+          date_service: req.body.date_service,
+          serial: req.body.serial,
+          configuration: req.body.configuration,
+      };
+      let id = req.body._id;
+      Automates.findByIdAndUpdate(id, update, function (err) {
+          if(!err){
+              res.redirect('/');
+          }else{
+              console.log("erreur lors de la mise a jour =>", err);
+              res.redirect('/');
+          }
+      })
+    }
+
+    deleteAutomates (req, res) {
+        let id=req.params.id;
+          Automates.remove({_id:id},function(err) {
+            if(err) {
+              console.log(err)
+              res.redirect("/");
+            }
+            else {
+              console.log("Automate deleted!");
+              res.redirect("/");
+            }
+          });
+        };
+}
+
+module.exports = Automate;

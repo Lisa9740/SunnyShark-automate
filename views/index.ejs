@@ -4,19 +4,94 @@
 
 <body>
   <% include partials/header.ejs%>
-  <div class="container-fluid">
+  <div class="container-fluid d-flex justify-content-center "> 
+    <div class="row">
+        <div class="col">  <button class="btn btn-danger mt-3 text-uppercase lato-font" id="show"> Ajouter données</button></div>
+        <div class="col">  <button class="btn btn-success mt-3 text-uppercase lato-font" id="show_donnee"> Consulter donnees</button></div>
+    </div>
+  
+    </div>
+ 
+  <div class="container-fluid hidden" id="ajout_donnee">
+    <!---------------------------------------------------------------->
+    <!-- PARTIE CREATION DES ELEMENTS DE LA BDD (AVEC DES MODALES) -->
+    <!---------------------------------------------------------------->
 
     <div class="row  container-fluid mb-3 ">
-      <div class="col-10  mb-3 mt-3">
-        <h1 class="text-center lato-font grey-color text-capitalized"> </h1>
-      </div>
+           <!-- CREATE MARQUE-->
       <div class="col-2 text-right pt-3 mt-3">
-        <a href="#mymodal" data-toggle="modal" date-target="#mymodal" type="button" class=" btn btn-primary mr-2" id="create_button"><i
-            class="far fa-plus-square mr-2 mt-1"></i>
-          Nouvel
-          automate </a>
+        <a href="#createMarque" data-toggle="modal" date-target="#createMarque" type="button" class=" btn btn-outline-primary mr-2"
+          id="create_button"><i class="far fa-plus-square mr-2 mt-1 text-uppercase"> marque</i></a>
       </div>
+      <!-- CREATE TYPE AUTOMATE-->
+      <div class="col-2 text-right pt-3 mt-3">
+        <a href="#createTypeAutomate" data-toggle="modal" date-target="#createTypeAutomate" type="button" class=" btn btn-outline-primary mr-2"
+          id="create_button"><i class="far fa-plus-square mr-2 mt-1 text-uppercase"> Type automate</i></a>
+      </div>
+         <!-- CREATE BASSIN-->
+      <div class="col-2 text-right pt-3 mt-3">
+        <a href="#create-bassin" data-toggle="modal" date-target="#create-bassin" type="button" class=" btn btn-outline-primary mr-2"><i
+            class="far fa-plus-square mr-2 mt-1 text-uppercase "> bassin</i> </a>
+      </div>
+        <!-- CREATE TYPE BASSIN-->
+      <div class="col-2 text-right pt-3 mt-3">
+        <a href="#create-type-bassin" data-toggle="modal" date-target="#create-type-bassin" type="button" class=" btn btn-outline-primary mr-2"><i
+            class="far fa-plus-square mr-2 mt-1 text-uppercase "> Type de bassin</i> </a>
+      </div>
+        <!-- CREATE SITE-->
+      <div class="col-2 text-right pt-3 mt-3">
+          <a href="#create-site" data-toggle="modal" date-target="#create-site" type="button" class=" btn btn-outline-primary mr-2"><i
+              class="far fa-plus-square mr-2 mt-1 text-uppercase "> Lieu </i> </a>
+        </div>
+             <!-- CREATE VILLE-->
+      <div class="col-2 text-right pt-3 mt-3">
+        <a href="#create-ville" data-toggle="modal" date-target="#create-ville" type="button" class=" btn btn-outline-primary mr-2"><i
+            class="far fa-plus-square mr-2 mt-1 text-uppercase "> Ville </i> </a>
+      </div>
+     
+       
+    </div>
+  </div>
 
+  <div class="container-fluid hidden" id="consultation_donnee">
+      <!---------------------------------------------------------------->
+      <!-- PARTIE CONSULTATION DES ELEMENTS DE LA BDD (AVEC DES MODALES) -->
+      <!---------------------------------------------------------------->
+  
+      <div class="row  container-fluid px-5 mb-3 ">
+             <!--  MARQUE-->
+        <div class="col-2 text-right pt-3 mt-3">
+          <a href="#" type="button" class=" btn btn-primary mr-2"
+            id="create_button"><i class="fas fa-search-plus mr-2 mt-1 text-uppercase"> Marques</i></a>
+        </div>
+        <!--  TYPE AUTOMATE-->
+        <div class="col-2 text-right pt-3 mt-3">
+          <a href="#"  type="button" class=" btn btn-primary mr-2"
+            id="create_button"><i class="fas fa-search-plus mr-2 mt-1 text-uppercase"> Type </i></a>
+        </div>
+           <!--  BASSIN-->
+        <div class="col-2 text-right pt-3 mt-3">
+          <a href="#" type="button" class=" btn btn-primary mr-2"><i
+              class="fas fa-search-plus mr-2 mt-1 text-uppercase "> bassin</i> </a>
+        </div>
+          <!--  TYPE BASSIN-->
+        <div class="col-2 text-right pt-3 mt-3">
+          <a href="#" type="button" class=" btn btn-primary mr-2"><i
+              class="fas fa-search-plus mr-2 mt-1 text-uppercase "> Type de bassin</i> </a>
+        </div>
+          <!--  SITE-->
+        <div class="col-2 text-right pt-3 mt-3">
+            <a href="#" type="button" class=" btn btn-primary mr-2"><i
+                class="fas fa-search-plus mr-2 mt-1 text-uppercase "> Lieu </i> </a>
+          </div>
+               <!-- VILLE-->
+        <div class="col-2 text-right pt-3 mt-3">
+          <a href="#" type="button" class=" btn btn-primary mr-2"><i
+              class="fas fa-search-plus mr-2 mt-1 text-uppercase "> Ville </i> </a>
+        </div>
+       
+         
+      </div>
     </div>
     <!------------------------------------------->
     <!---Messages d'alerte de succès add/update/delete----->
@@ -31,19 +106,29 @@
       <div id="messages_content_delete"></div>
     </div>
     <!------------------------------------------------------->
+<div class="row mb-3">
+    <div class="col-2 text-right pt-3 mt-3">
+      <a href="#mymodal" data-toggle="modal" date-target="#mymodal" type="button" class="text-uppercase btn btn-primary mr-2 lato-font" id="create_button"><i
+          class="far fa-plus-square mr-2 mt-1  ">  </i>Créer automate</a>
+    </div>
+  </div>
 
 
+  <!-- AFFICHAGE DU TABLEAU -->
+<section class="container-fluid">
     <% if(automates.length>0) { %>
     <table class="table table-light table-striped table-bordered table-hover">
       <thead>
         <tr>
 
           <th>Marque</th>
-          <th>Modèle</th>
-          <th>Numéro de série</th>
+          <th>Type</th>
           <th>Date de mise en service</th>
-          <th>Lieu</th>
+          <th>Numéro de série</th>
+          <th> Ville</th>
+          <th>Site</th>
           <th>Bassin</th>
+          <th>Type bassin</th>
           <th>Consulter détails</th>
           <th>Modifier</th>
           <th>Supprimer</th>
@@ -51,58 +136,67 @@
       </thead>
       <tbody>
 
-        <% for(var i=0; i<(automates.length);i++) { %>
+
+        <% automates.forEach(function (automate) { %>%>
         <tr>
 
           <td>
-            <%= automates[i].marque%>
+
+            <%= automate.id_marques.nom%>
           </td>
           <td>
-            <%= automates[i].modele%>
+            <%= automate.id_types.nom%>
           </td>
           <td>
-            <%= automates[i].numeroserie%>
+            <%= automate.date_service%>
           </td>
           <td>
-            <%= automates[i].date_service%>
+            <%= automate.serial%>
 
           </td>
-          <td>
-            <%= automates[i].lieu%>
+          <td class="bg-dark">
+            <%= automate.ville%>
           </td>
-          <td>
-            <%= automates[i].bassin%>
+          <td class="bg-dark">
+            <%= automate.site%>
+          </td>
+          <td class="bg-dark">
+            <%= automate.bassin%>
+          </td>
+          <td class="bg-dark">
+            <%= automates.type_bassin%>
           </td>
           <td>
             <span class="hidden">
-              <%= automates[i].description%></span>
-            <a href="/show/<%=automates._id%>" data-target="#descriptionModal" data-toggle="modal" data-id="<%=automates[i]._id%>"
-              data-marque="<%=automates[i].marque%>" data-modele="<%=automates[i].modele%>" data-date_service="<%=automates[i].date_service%>"
-              data-bassin="<%=automates[i].bassin%>" data-lieu="<%=automates[i].lieu%>" data-numeroserie="<%=automates[i].numeroserie%>"
-              data-description="<%= automates[i].description%>" class="text-center">
+              <%= automate.configuration%></span>
+            <a href="#descriptionModal" data-target="#descriptionModal" data-toggle="modal" data-id="<%=automate._id%>"
+              data-marque="<%=automate.marque%>" data-type="<%=automate.type%>" data-date_service="<%=automate.date_service%>"
+              data-bassin="<%=automate.bassin%>" data-site="<%=automate.site%>" data-numeroserie="<%=automate.numeroserie%>"
+              data-ville="<%= automate.ville%>" data-configuration="<%=automate.configuration%>" class="text-center">
               <i class="fas fa-search-plus fa-2x text-center"></i> </a>
           </td>
 
-          <td><a href="#editModal" data-target="#editModal" data-toggle="modal" data-id="<%=automates[i]._id%>"
-              data-marque="<%=automates[i].marque%>" data-modele="<%=automates[i].modele%>" data-date_service="<%=automates[i].date_service%>"
-              data-bassin="<%=automates[i].bassin%>" data-lieu="<%=automates[i].lieu%>" data-numeroserie="<%=automates[i].numeroserie%>"
-              data-description_edit="<%automates[i].description%>"> <i class="fas fa-edit fa-2x"></i></a></td>
+          <td><a href="#editModal" data-target="#editModal" data-toggle="modal" data-id="<%=automate._id%>" data-marque="<%=automate.id_marques.nom%>"
+              data-type="<%=automate.id_types.nom%>" data-date_service="<%=automate.date_service%>" 
+              data-serial="<%=automate.serial%>"
+              data-configuration_edit="<%automate.configuration%>"> <i class="fas fa-edit fa-2x"></i></a></td>
 
 
           <td>
-            <form onSubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette automate ?')" action="/delete/<%= automates[i]._id %>"
+            <form onSubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette automate ?')" action="/delete/<%= automate._id %>"
               method="POST" id="delete-form">
               <button class="btn btn-success" type="submit" id="alertDelete"><i class='far fa-trash-alt '></i></button>
             </form>
           </td>
         </tr>
-        <% } %>
+        <% }) %>
       </tbody>
     </table>
     <% } else { %>
     <div>No automates found.</div>
     <% } %>
   </div>
+</section>
 
   <!-- Modal création nouvel automate -->
   <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -145,6 +239,11 @@
       </div>
     </div>
   </div>
+
+
+
+
+
   <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -166,8 +265,130 @@
     </div>
   </div>
 
+  <div class="modal fade" id="createMarque" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header blue-underline bg-dark text-white">
+          <h5 class="modal-title lato-font font-weight-bold" id="exampleModalLabel"> Ajouter une marque</h5>
+          <button type="button" class="close bg-light" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%include createMarque.ejs%>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="createTypeAutomate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header blue-underline bg-dark text-white">
+          <h5 class="modal-title lato-font font-weight-bold" id="exampleModalLabel"> Ajouter un type d'automate</h5>
+          <button type="button" class="close bg-light" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%include createTypeAutomate.ejs%>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+  <div class="modal fade" id="create-bassin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header blue-underline bg-dark text-white">
+          <h5 class="modal-title lato-font font-weight-bold" id="exampleModalLabel"> Ajouter un bassin</h5>
+          <button type="button" class="close bg-light" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%include createBassin.ejs%>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="create-type-bassin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header blue-underline bg-dark text-white">
+          <h5 class="modal-title lato-font font-weight-bold" id="exampleModalLabel"> Ajouter un type de bassin</h5>
+          <button type="button" class="close bg-light" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%include createTypeBassin.ejs%>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="create-ville" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header blue-underline bg-dark text-white">
+          <h5 class="modal-title lato-font font-weight-bold" id="exampleModalLabel"> Ajouter une ville</h5>
+          <button type="button" class="close bg-light" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%include createVille.ejs%>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="create-site" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header blue-underline bg-dark text-white">
+            <h5 class="modal-title lato-font font-weight-bold" id="exampleModalLabel"> Ajouter un lieu</h5>
+            <button type="button" class="close bg-light" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%include createSite.ejs%>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  
 
 
   <!-- views/partials/header.ejs -->

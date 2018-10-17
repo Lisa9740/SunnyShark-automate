@@ -1,0 +1,6 @@
+<label for=""> Selectionner le lieu </label>
+<select class="form-control"  name="id_site">
+    <% sites.forEach(function (site) { %>
+        <option value="<%= site._id %>"><%= site.nom %></option>
+    <% }) %>
+</select>
